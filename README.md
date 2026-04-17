@@ -18,6 +18,27 @@ The script loads the checkpoint and samples from the model on a test input.
 Due to the large size of the model (314B parameters), a machine with enough GPU memory is required to test the model with the example code.
 The implementation of the MoE layer in this repository is not efficient. The implementation was chosen to avoid the need for custom kernels to validate the correctness of the model.
 
+## Apple Silicon Note (Important)
+
+If you are on an M-series Mac, this repository is still useful for exploration and tooling, but full local inference with Grok-1 weights is typically not practical due to memory requirements.
+
+- bf16/fp16 weights alone are on the order of ~628 GB.
+- 8-bit weights are on the order of ~314 GB.
+- 4-bit weights are on the order of ~157 GB.
+
+Use this repository to:
+
+- prepare prompts/evals locally,
+- validate workflows/scripts,
+- and run full Grok-1 inference on suitable multi-GPU infrastructure.
+
+For a practical setup path, see:
+
+- `docs/PERFECT_GROK1_PLAN.md`
+- `docs/MACOS_QUICKSTART.md`
+- `scripts/macos_quickstart.sh`
+- `scripts/system_check.py`
+
 # Model Specifications
 
 Grok-1 is currently designed with the following specifications:
